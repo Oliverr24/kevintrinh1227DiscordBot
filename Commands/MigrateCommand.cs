@@ -13,7 +13,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Channel.DeleteMessageAsync(ctx.Message).ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "owner");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower().Contains("owner"));
 
 
             if (!roleCheck) {
