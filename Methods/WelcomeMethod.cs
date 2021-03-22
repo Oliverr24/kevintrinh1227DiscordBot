@@ -14,6 +14,8 @@ namespace kevintrinh1227.Methods {
 
             var welcomeRole = guild.Roles.FirstOrDefault(x => x.Value.Name.ToLower().Contains("» default")).Value;
 
+            var houndLogo = guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
+
             var pinEmo = DiscordEmoji.FromName(sender, ":pushpin:");
 
             if (welcomeChannel == null || welcomeRole == null || botUseageCh == null) {
@@ -26,6 +28,7 @@ namespace kevintrinh1227.Methods {
                 Color = new DiscordColor(0xFF5555),
                 Timestamp = DateTime.UtcNow,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
+                    IconUrl = houndLogo.Url,
                     Text = $"©️ Asmodeus Club | Network"
                 }
             };
