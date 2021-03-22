@@ -109,7 +109,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*" || x.Name.ToLower() == "owner");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*" || x.Name.ToLower() == "support team");
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
