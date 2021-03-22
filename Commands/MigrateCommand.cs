@@ -9,10 +9,16 @@ namespace kevintrinh1227.Commands {
     public class MigrateCommand : BaseCommandModule {
 
         [Command("migratelite")]
-        [RequireOwner]
         public async Task MigrateLite(CommandContext ctx) {
 
             await ctx.Channel.DeleteMessageAsync(ctx.Message).ConfigureAwait(false);
+
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "owner");
+
+
+            if (!roleCheck) {
+                return;
+            }
 
             await ctx.RespondAsync("*** migrating... ***").ConfigureAwait(false);
 
