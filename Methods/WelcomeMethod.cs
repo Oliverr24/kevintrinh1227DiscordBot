@@ -23,7 +23,7 @@ namespace kevintrinh1227.Methods {
             }
 
             var welcomeEmbed = new DiscordEmbedBuilder() {
-                Title = $"Welcome {member.Username}#{member.Discriminator} To **Asmodeous Club** (#{guild.MemberCount})",
+                Title = $"Welcome {member.Username}#{member.Discriminator} To **Asmodeus Club** (#{guild.MemberCount})",
                 Description = $"\n{pinEmo}**Server Information**{pinEmo}\n\n**Server IP** » `play.asmodeus.club`\n**Server Store** » https://asmodeus.club/store \n**Forums** » https://asmodeus.club/",
                 Color = new DiscordColor(0xFF5555),
                 Timestamp = DateTime.UtcNow,
