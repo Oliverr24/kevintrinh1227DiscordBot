@@ -82,7 +82,7 @@ namespace kevintrinh1227.Commands {
 
             description = descriptionResponse.Result.Content;
 
-            var urlMessage = await ctx.Channel.SendMessageAsync("Please give us the URL to the image you would like included.").ConfigureAwait(false);
+            var urlMessage = await ctx.Channel.SendMessageAsync("Please give us the URL to the image you would like included. If you do not wish for one type NA").ConfigureAwait(false);
 
             delMsg.Add(urlMessage);
 
@@ -102,7 +102,12 @@ namespace kevintrinh1227.Commands {
             };
 
             try {
-                sendEmbed.WithImageUrl(urlResponse.Result.Content.Trim());
+                if (urlResponse.Result.Content.ToLower().Contains("NA")) {
+
+                } else {
+                    sendEmbed.WithImageUrl(urlResponse.Result.Content.Trim());
+                }
+
             }
             catch {
 
