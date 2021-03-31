@@ -56,6 +56,8 @@ namespace kevintrinh1227.Methods {
 
                 roleEmbed.Description = $"» Roles were added to {e.Member.Username}#{e.Member.Discriminator} \n\n » Roles Added: {allRoles}";
 
+                await staffLogCh.SendMessageAsync(embed: roleEmbed).ConfigureAwait(false);
+
             }
             else if (rolesB.Count > rolesA.Count) {
                 roleEmbed.Title = "Roles Removed";
@@ -76,9 +78,9 @@ namespace kevintrinh1227.Methods {
 
                 roleEmbed.Description = $"» Roles were removed from {e.Member.Username}#{e.Member.Discriminator} \n\n » Roles Removed: {allRoles}";
 
-            }
+                await staffLogCh.SendMessageAsync(embed: roleEmbed).ConfigureAwait(false);
 
-            await staffLogCh.SendMessageAsync(embed: roleEmbed).ConfigureAwait(false);
+            }
 
         }
 
