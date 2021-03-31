@@ -52,7 +52,7 @@ namespace kevintrinh1227.Commands {
 
             var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
-            var botUseageCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("bot-usage")).Value;
+            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-logs")).Value;
 
             List<string> rString = new List<string>();
 
@@ -84,7 +84,7 @@ namespace kevintrinh1227.Commands {
 
             inspectEmbed.WithThumbnail(member.AvatarUrl);
 
-            await botUseageCh.SendMessageAsync(embed: inspectEmbed).ConfigureAwait(false);
+            await staffLogCh.SendMessageAsync(embed: inspectEmbed).ConfigureAwait(false);
 
         }
 

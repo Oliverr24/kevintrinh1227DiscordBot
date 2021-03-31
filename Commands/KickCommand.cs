@@ -17,7 +17,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
@@ -38,7 +38,7 @@ namespace kevintrinh1227.Commands {
 
             var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
-            var botUseageCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("bot-usage")).Value;
+            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-logs")).Value;
 
             var kickEmbed = new DiscordEmbedBuilder {
                 Title = $"Infractions | Kick",
@@ -60,7 +60,7 @@ namespace kevintrinh1227.Commands {
 
             }
 
-            await botUseageCh.SendMessageAsync(embed: kickEmbed).ConfigureAwait(false);
+            await staffLogCh.SendMessageAsync(embed: kickEmbed).ConfigureAwait(false);
 
 
         }

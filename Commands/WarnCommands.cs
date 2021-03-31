@@ -19,7 +19,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
@@ -38,7 +38,7 @@ namespace kevintrinh1227.Commands {
                 return;
             }
 
-            var botUseageCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("bot-usage")).Value;
+            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-logs")).Value;
 
             var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
@@ -79,7 +79,7 @@ namespace kevintrinh1227.Commands {
                 }
             };
 
-            await botUseageCh.SendMessageAsync(embed: warnEmbed).ConfigureAwait(false);
+            await staffLogCh.SendMessageAsync(embed: warnEmbed).ConfigureAwait(false);
 
         }
 
@@ -92,7 +92,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
@@ -111,7 +111,7 @@ namespace kevintrinh1227.Commands {
                 return;
             }
 
-            var botUseageCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("bot-usage")).Value;
+            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-logs")).Value;
 
             var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
@@ -142,7 +142,7 @@ namespace kevintrinh1227.Commands {
                             }
                         };
 
-                        await botUseageCh.SendMessageAsync(embed: warnEmbed).ConfigureAwait(false);
+                        await staffLogCh.SendMessageAsync(embed: warnEmbed).ConfigureAwait(false);
 
                     } else {
 
@@ -157,7 +157,7 @@ namespace kevintrinh1227.Commands {
                             }
                         };
 
-                        await botUseageCh.SendMessageAsync(embed: warnEmbed).ConfigureAwait(false);
+                        await staffLogCh.SendMessageAsync(embed: warnEmbed).ConfigureAwait(false);
 
                     }
 
@@ -181,7 +181,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
@@ -200,7 +200,7 @@ namespace kevintrinh1227.Commands {
                 return;
             }
 
-            var botUseageCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("bot-usage")).Value;
+            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-logs")).Value;
 
             var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
@@ -238,7 +238,7 @@ namespace kevintrinh1227.Commands {
 
             }
 
-            await botUseageCh.SendMessageAsync(embed: warningsEmbed).ConfigureAwait(false);
+            await staffLogCh.SendMessageAsync(embed: warningsEmbed).ConfigureAwait(false);
 
         }
 

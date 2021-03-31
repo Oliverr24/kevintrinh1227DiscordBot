@@ -49,6 +49,18 @@ namespace kevintrinh1227 {
             Client.GuildMemberAdded += OnMemberJoin;
             Client.MessageReactionAdded += OnReactionAdded;
             Client.Heartbeated += OnHeartBeat;
+            Client.MessageCreated += OnMessageSent;
+            Client.GuildMemberRemoved += OnMemberLeave;
+            Client.ChannelCreated += OnChannelCreated;
+            Client.ChannelDeleted += OnChannelDeleted;
+            Client.ChannelUpdated += OnChannelUpdated;
+            Client.GuildMemberUpdated += OnMemberUpdated;
+            Client.GuildRoleCreated += OnRoleCreated;
+            Client.GuildRoleDeleted += OnRoleDeleted;
+            Client.GuildRoleUpdated += OnRoleUpdated;
+            Client.MessageDeleted += OnMessageDeleted;
+            Client.MessagesBulkDeleted += OnMessageBulkDeleted;
+            Client.MessageUpdated += OnMessageUpdated;
 
             //Setup for interactivity
             Client.UseInteractivity(new InteractivityConfiguration {
@@ -78,6 +90,7 @@ namespace kevintrinh1227 {
             Commands.RegisterCommands<KickCommand>();
             Commands.RegisterCommands<InspectCommand>();
             Commands.RegisterCommands<PostReactionCommand>();
+            Commands.RegisterCommands<ApplyCommand>();
 
             //Connect the bot to Discord
             await Client.ConnectAsync();
@@ -156,6 +169,21 @@ namespace kevintrinh1227 {
 
         }
 
+        //Member leave event
+        private async Task OnMemberLeave(DiscordClient sender, GuildMemberRemoveEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var memberLeaveInstance = new MemberLeavingMethod();
+
+            _ = Task.Run(() => memberLeaveInstance.OnMemberLeave(e.Guild, e.Member));
+
+            await Task.CompletedTask;
+
+        }
+
         //Reaction Added Event
         private async Task OnReactionAdded(DiscordClient sender, MessageReactionAddEventArgs e) {
 
@@ -165,8 +193,155 @@ namespace kevintrinh1227 {
 
             var reactionMessageInstance = new ReactionRolesMethod();
 
-            _ = Task.Run(() => reactionMessageInstance.ApplyReactionRole(sender, e.Guild, e.Message, (DiscordMember) e.User, e));
+            _ = Task.Run(() => reactionMessageInstance.ApplyReactionRole(sender, e.Guild, e.Message, (DiscordMember)e.User, e));
 
+        }
+
+        //Messages sent event
+        private async Task OnMessageSent(DiscordClient sender, MessageCreateEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var bannedMessageInstance = new BannedWordMethod();
+
+            _ = Task.Run(() => bannedMessageInstance.OnBannedWords(e.Guild, e.Message));
+
+            await Task.CompletedTask;
+        }
+
+        //Channel Created
+        private async Task OnChannelCreated(DiscordClient sender, ChannelCreateEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var createdChInstance = new ChannelModificationMethod();
+
+            _ = Task.Run(() => createdChInstance.OnChannelCreate(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+
+        //Channel Deleted
+        private async Task OnChannelDeleted(DiscordClient sender, ChannelDeleteEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var deletedChInstance = new ChannelModificationMethod();
+
+            _ = Task.Run(() => deletedChInstance.OnChannelDelete(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+
+        //Channel Edited
+        private async Task OnChannelUpdated(DiscordClient sender, ChannelUpdateEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var editedChInstance = new ChannelModificationMethod();
+
+            _ = Task.Run(() => editedChInstance.OnChannelModified(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+
+        private async Task OnMemberUpdated(DiscordClient sender, GuildMemberUpdateEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var roleChangeInstance = new RoleChangeMethod();
+
+            _ = Task.Run(() => roleChangeInstance.OnRoleChange(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+
+        private async Task OnRoleCreated(DiscordClient sender, GuildRoleCreateEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var roleCreateInstance = new RoleChangeMethod();
+
+            _ = Task.Run(() => roleCreateInstance.OnRoleCreate(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+        
+        private async Task OnRoleDeleted(DiscordClient sender, GuildRoleDeleteEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var roleDeleteInstance = new RoleChangeMethod();
+
+            _ = Task.Run(() => roleDeleteInstance.OnRoleDelete(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+        
+        private async Task OnRoleUpdated(DiscordClient sender, GuildRoleUpdateEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var roleUpdatedInstance = new RoleChangeMethod();
+
+            _ = Task.Run(() => roleUpdatedInstance.OnRoleModified(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+
+        private async Task OnMessageDeleted(DiscordClient sender, MessageDeleteEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var messageDeleteInstance = new DeletedMessagesMethod();
+
+            _ = Task.Run(() => messageDeleteInstance.OnMsgDelete(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+
+        private async Task OnMessageBulkDeleted(DiscordClient sender, MessageBulkDeleteEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var messageBulkDeleteInstance = new DeletedMessagesMethod();
+
+            _ = Task.Run(() => messageBulkDeleteInstance.OnMsgBulkDelete(e.Guild, e));
+
+            await Task.CompletedTask;
+        }
+
+        private async Task OnMessageUpdated(DiscordClient sender, MessageUpdateEventArgs e) {
+
+            if (e.Guild == null) {
+                return;
+            }
+
+            var messageUpdatedInstance = new DeletedMessagesMethod();
+
+            _ = Task.Run(() => messageUpdatedInstance.OnMsgUpdated(e.Guild, e));
+
+            await Task.CompletedTask;
         }
 
 

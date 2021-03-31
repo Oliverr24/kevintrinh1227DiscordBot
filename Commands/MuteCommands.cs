@@ -17,7 +17,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
@@ -38,7 +38,7 @@ namespace kevintrinh1227.Commands {
 
             var muteRole = ctx.Guild.Roles.FirstOrDefault(x => x.Value.Name.ToLower().Contains("muted")).Value;
 
-            var botUseageCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("bot-usage")).Value;
+            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-logs")).Value;
 
             if (member.Roles.Contains(muteRole)) {
 
@@ -55,7 +55,7 @@ namespace kevintrinh1227.Commands {
                     }
                 };
 
-                await botUseageCh.SendMessageAsync(embed: muteEmbed).ConfigureAwait(false);
+                await staffLogCh.SendMessageAsync(embed: muteEmbed).ConfigureAwait(false);
 
                 return;
 
@@ -76,7 +76,7 @@ namespace kevintrinh1227.Commands {
 
                 await member.GrantRoleAsync(muteRole).ConfigureAwait(false);
 
-                await botUseageCh.SendMessageAsync(embed: muteEmbed).ConfigureAwait(false);
+                await staffLogCh.SendMessageAsync(embed: muteEmbed).ConfigureAwait(false);
 
                 return;
 
@@ -93,7 +93,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
@@ -114,7 +114,7 @@ namespace kevintrinh1227.Commands {
 
             var muteRole = ctx.Guild.Roles.FirstOrDefault(x => x.Value.Name.ToLower().Contains("muted")).Value;
 
-            var botUseageCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("bot-usage")).Value;
+            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-logs")).Value;
 
             if (member.Roles.Contains(muteRole)) {
 
@@ -133,7 +133,7 @@ namespace kevintrinh1227.Commands {
 
                 await member.RevokeRoleAsync(muteRole).ConfigureAwait(false);
 
-                await botUseageCh.SendMessageAsync(embed: muteEmbed).ConfigureAwait(false);
+                await staffLogCh.SendMessageAsync(embed: muteEmbed).ConfigureAwait(false);
 
                 return;
 
@@ -153,7 +153,7 @@ namespace kevintrinh1227.Commands {
                     }
                 };
 
-                await botUseageCh.SendMessageAsync(embed: muteEmbed).ConfigureAwait(false);
+                await staffLogCh.SendMessageAsync(embed: muteEmbed).ConfigureAwait(false);
 
                 return;
 
