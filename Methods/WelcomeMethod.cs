@@ -24,7 +24,7 @@ namespace kevintrinh1227.Methods {
 
             var pinEmo = DiscordEmoji.FromName(sender, ":pushpin:");
             var warnEmo = DiscordEmoji.FromName(sender, ":warning:");
-
+            Console.WriteLine("1");
             if (welcomeChannel == null || welcomeRole == null || staffLogsCh == null || selfRoleCh == null || announcementsCh == null || serverlogsCh == null || rulesCh == null || informationCh == null) {
                 if (staffLogsCh != null) {
                     await staffLogsCh.SendMessageAsync("Welcome message failed, null check.").ConfigureAwait(false);
@@ -33,7 +33,7 @@ namespace kevintrinh1227.Methods {
                 }
                 return;
             }
-
+            Console.WriteLine("2");
             var welcomeEmbed = new DiscordEmbedBuilder() {
                 Title = $"Welcome {member.Username}#{member.Discriminator} To **Asmodeus Club** (#{guild.MemberCount})",
                 Description = $"\n{pinEmo}**Server Information**{pinEmo}\n\n**Server IP** » `play.asmodeus.club`\n**Server Store** » https://asmodeus.club/store \n**Forums** » https://asmodeus.club/",
@@ -57,11 +57,11 @@ namespace kevintrinh1227.Methods {
                     Text = $"©️ Asmodeus Club | Network"
                 }
             };
-
+            Console.WriteLine("3");
             welcomeEmbed.WithThumbnail(member.AvatarUrl);
 
             await welcomeChannel.SendMessageAsync(embed: welcomeEmbed).ConfigureAwait(false);
-
+            Console.WriteLine("4");
             try {
                 await member.GrantRoleAsync(welcomeRole).ConfigureAwait(false);
             }
@@ -75,7 +75,7 @@ namespace kevintrinh1227.Methods {
             catch {
                 await staffLogsCh.SendMessageAsync($"{member.Mention} did not receive join message - private messages are off.").ConfigureAwait(false);
             }
-
+            Console.WriteLine("5");
             await staffLogsCh.SendMessageAsync($"{member.Username} joined the server.").ConfigureAwait(false);
 
         }

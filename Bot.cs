@@ -162,11 +162,11 @@ namespace kevintrinh1227 {
             if (e.Guild == null) {
                 return;
             }
-
+            Console.WriteLine("event");
             var welcomeMessageInstance = new WelcomeMethod();
 
             _ = Task.Run(() => welcomeMessageInstance.WelcomeSendMethod(sender, e.Guild, e.Member));
-
+            Console.WriteLine("sent");
         }
 
         //Member leave event
