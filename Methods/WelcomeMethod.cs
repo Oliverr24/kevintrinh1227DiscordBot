@@ -10,7 +10,6 @@ namespace kevintrinh1227.Methods {
         public async Task WelcomeSendMethod(DiscordClient sender, DiscordGuild guild, DiscordMember member) {
 
             var welcomeChannel = guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("welcome")).Value;
-            var botUseageCh = guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("bot-usage")).Value;
             var staffLogsCh = guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-logs")).Value;
             var selfRoleCh = guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("self-roles")).Value;
             var announcementsCh = guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("announcements")).Value;
@@ -26,7 +25,12 @@ namespace kevintrinh1227.Methods {
             var pinEmo = DiscordEmoji.FromName(sender, ":pushpin:");
             var warnEmo = DiscordEmoji.FromName(sender, ":warning:");
 
-            if (welcomeChannel == null || welcomeRole == null || botUseageCh == null || staffLogsCh == null || selfRoleCh == null || announcementsCh == null || serverlogsCh == null || rulesCh == null || informationCh == null) {
+            if (welcomeChannel == null || welcomeRole == null || staffLogsCh == null || selfRoleCh == null || announcementsCh == null || serverlogsCh == null || rulesCh == null || informationCh == null) {
+                if (staffLogsCh != null) {
+                    await staffLogsCh.SendMessageAsync("Welcome message failed, null check.").ConfigureAwait(false);
+                } else {
+                    Console.WriteLine("Welcome message failed, null check.");
+                }
                 return;
             }
 
@@ -62,7 +66,7 @@ namespace kevintrinh1227.Methods {
                 await member.GrantRoleAsync(welcomeRole).ConfigureAwait(false);
             }
             catch {
-                await botUseageCh.SendMessageAsync($"The role {welcomeRole.Name} was not applied to {member.Mention}.").ConfigureAwait(false);
+                await staffLogsCh.SendMessageAsync($"The role {welcomeRole.Name} was not applied to {member.Mention}.").ConfigureAwait(false);
             }
 
             try {
