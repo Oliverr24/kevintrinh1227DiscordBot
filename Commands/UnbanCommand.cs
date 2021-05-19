@@ -43,7 +43,7 @@ namespace kevintrinh1227.Commands {
             var unbanEmbed = new DiscordEmbedBuilder {
                 Title = $"Infractions | Unban",
                 Description = $"» A user has been unbanned from the server.\n\n**User** » {user.Username}#{user.Discriminator} \n **ID** » {user.Id} \n **Reason** » {reason}",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

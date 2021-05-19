@@ -21,7 +21,7 @@ namespace kevintrinh1227.Methods {
             var houndLogo = guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
             var roleEmbed = new DiscordEmbedBuilder {
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -96,7 +96,7 @@ namespace kevintrinh1227.Methods {
 
             var createdEmbed = new DiscordEmbedBuilder {
                 Title = "Role Created",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -122,7 +122,7 @@ namespace kevintrinh1227.Methods {
 
             var createdEmbed = new DiscordEmbedBuilder {
                 Title = "Role Deleted",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -148,7 +148,7 @@ namespace kevintrinh1227.Methods {
 
             var createdEmbed = new DiscordEmbedBuilder {
                 Title = "Role Edited",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

@@ -21,7 +21,7 @@ namespace kevintrinh1227.Methods {
             var houndLogo = guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
             var leftEmbed = new DiscordEmbedBuilder {
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

@@ -45,7 +45,7 @@ namespace kevintrinh1227.Commands {
             var reactionEmbed = new DiscordEmbedBuilder {
                 Title = $"Self Roles",
                 Description = $"» Select a role to get server change updates, \n » React again to remove the selected role. \n\n » React with {bustsEmo}  to get the @stafflogs  role! \n » React with {gearEmo} to get the @changelogs role!",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

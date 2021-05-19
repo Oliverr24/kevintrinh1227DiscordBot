@@ -43,7 +43,7 @@ namespace kevintrinh1227.Commands {
             var kickEmbed = new DiscordEmbedBuilder {
                 Title = $"Infractions | Kick",
                 Description = $"» A user has been kicked from the server.\n\n**User** » {member.Username}#{member.Discriminator} \n **ID** » {member.Id} \n **Reason** » {reason}",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

@@ -47,7 +47,7 @@ namespace kevintrinh1227.Commands {
                 var muteEmbed = new DiscordEmbedBuilder {
                     Title = $"Infraction | Mute",
                     Description = $"» This user is already muted.\n\n**User** » {member.Mention} \n **ID** » {member.Id} \n **Appeal link** » https://www.asmodeus.club/appeal",
-                    Color = new DiscordColor(0xFF5555),
+                    Color = new DiscordColor(0xFF0000),
                     Timestamp = DateTime.Now,
                     Footer = new DiscordEmbedBuilder.EmbedFooter {
                         IconUrl = houndLogo.Url,
@@ -66,7 +66,7 @@ namespace kevintrinh1227.Commands {
                 var muteEmbed = new DiscordEmbedBuilder {
                     Title = $"Infraction | Mute",
                     Description = $"» A mute has been issued.\n\n**User** » {member.Mention} \n **ID** » {member.Id} \n **Appeal link** » https://www.asmodeus.club/appeal \n\n **Reason** » {reason}",
-                    Color = new DiscordColor(0xFF5555),
+                    Color = new DiscordColor(0xFF0000),
                     Timestamp = DateTime.Now,
                     Footer = new DiscordEmbedBuilder.EmbedFooter {
                         IconUrl = houndLogo.Url,
@@ -123,7 +123,7 @@ namespace kevintrinh1227.Commands {
                 var muteEmbed = new DiscordEmbedBuilder {
                     Title = $"Infraction | Unmute",
                     Description = $"» User has been unmuted.\n\n**User** » {member.Mention} \n **ID** » {member.Id}",
-                    Color = new DiscordColor(0xFF5555),
+                    Color = new DiscordColor(0xFF0000),
                     Timestamp = DateTime.Now,
                     Footer = new DiscordEmbedBuilder.EmbedFooter {
                         IconUrl = houndLogo.Url,
@@ -145,7 +145,7 @@ namespace kevintrinh1227.Commands {
                 var muteEmbed = new DiscordEmbedBuilder {
                     Title = $"Infraction | Unmute",
                     Description = $"» This user is not muted.\n\n**User** » {member.Mention} \n **ID** » {member.Id}",
-                    Color = new DiscordColor(0xFF5555),
+                    Color = new DiscordColor(0xFF0000),
                     Timestamp = DateTime.Now,
                     Footer = new DiscordEmbedBuilder.EmbedFooter {
                         IconUrl = houndLogo.Url,

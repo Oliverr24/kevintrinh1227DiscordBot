@@ -22,7 +22,7 @@ namespace kevintrinh1227.Methods {
             var deletedEmbed = new DiscordEmbedBuilder {
                 Title = "Message Deleted",
                 Description = $"» A message was deleted. \n\n » Deleted From: {e.Channel.Mention} \n » Deleted Message: {e.Message.Content}",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -47,7 +47,7 @@ namespace kevintrinh1227.Methods {
             var deletedEmbed = new DiscordEmbedBuilder {
                 Title = "Bulk Messages Deleted",
                 Description = $"» A bulk deletion was made. \n\n » Deleted From: {e.Channel.Mention} \n » Deleted Amount: {e.Messages.Count}",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -78,7 +78,7 @@ namespace kevintrinh1227.Methods {
                 var deletedEmbed = new DiscordEmbedBuilder {
                     Title = "Message Updated",
                     Description = $"» A message was updated. \n\n » Channel: {e.Channel.Mention} \n » Previouse Message: {e.MessageBefore.Content} \n » Updated Message: {e.Message.Content}",
-                    Color = new DiscordColor(0xFF5555),
+                    Color = new DiscordColor(0xFF0000),
                     Timestamp = DateTime.Now,
                     Footer = new DiscordEmbedBuilder.EmbedFooter {
                         IconUrl = houndLogo.Url,

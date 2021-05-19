@@ -57,7 +57,8 @@ namespace kevintrinh1227.Commands {
                 newWarn.warningNumber = 1;
                 newWarn.memberId = member.Id;
                 newWarn.reason = reason;
-            } else {
+            }
+            else {
                 var lastWarning = cont.WarnedUsers.OrderByDescending(x => x.warningNumber).Select(r => r.warningNumber).FirstOrDefault();
                 newWarn.warningNumber = lastWarning + 1;
                 newWarn.memberId = member.Id;
@@ -71,7 +72,7 @@ namespace kevintrinh1227.Commands {
             var warnEmbed = new DiscordEmbedBuilder {
                 Title = $"Infraction | Warning issued",
                 Description = $"» A warning has been issued.\n\n**User** » {member.Mention} \n **ID** » {member.Id} \n\n **Reason** » {reason}",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -124,7 +125,7 @@ namespace kevintrinh1227.Commands {
                 return;
             }
 
-            foreach(var warning in cont.WarnedUsers) {
+            foreach (var warning in cont.WarnedUsers) {
                 if (warning.warningNumber == warnNumber) {
 
                     var member = ctx.Guild.Members.FirstOrDefault(x => x.Value.Id == warning.memberId).Value;
@@ -134,7 +135,7 @@ namespace kevintrinh1227.Commands {
                         var warnEmbed = new DiscordEmbedBuilder {
                             Title = $"Infraction | Warning Removed",
                             Description = $"» Warning has been removed.\n\n**User** » {member.Mention}",
-                            Color = new DiscordColor(0xFF5555),
+                            Color = new DiscordColor(0xFF0000),
                             Timestamp = DateTime.Now,
                             Footer = new DiscordEmbedBuilder.EmbedFooter {
                                 IconUrl = houndLogo.Url,
@@ -144,12 +145,13 @@ namespace kevintrinh1227.Commands {
 
                         await staffLogCh.SendMessageAsync(embed: warnEmbed).ConfigureAwait(false);
 
-                    } else {
+                    }
+                    else {
 
                         var warnEmbed = new DiscordEmbedBuilder {
                             Title = $"Infraction | Warning issued",
                             Description = $"» Warning has been removed from a member no longer within the community. \n\n**ID** » {member.Id}",
-                            Color = new DiscordColor(0xFF5555),
+                            Color = new DiscordColor(0xFF0000),
                             Timestamp = DateTime.Now,
                             Footer = new DiscordEmbedBuilder.EmbedFooter {
                                 IconUrl = houndLogo.Url,
@@ -215,8 +217,9 @@ namespace kevintrinh1227.Commands {
 
             var warningsEmbed = new DiscordEmbedBuilder {
                 Title = $"Infractions | Warning List",
-                Description = $"» List of all warnings for {member.Username}#{member.Discriminator}",
-                Color = new DiscordColor(0xFF5555),
+                Description = $"» List of all warnings for " +
+                $"{member.Username}#{member.Discriminator}",
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

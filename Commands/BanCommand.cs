@@ -43,7 +43,7 @@ namespace kevintrinh1227.Commands {
             var banEmbed = new DiscordEmbedBuilder {
                 Title = $"Infractions | Ban",
                 Description = $"» A user has been banned from the server.\n\n**User** » {member.Username}#{member.Discriminator} \n **ID** » {member.Id} \n **Reason** » {reason}",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

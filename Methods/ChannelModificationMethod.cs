@@ -27,7 +27,7 @@ namespace kevintrinh1227.Methods {
 
             var createdEmbed = new DiscordEmbedBuilder {
                 Title = "Channel Created",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -59,7 +59,7 @@ namespace kevintrinh1227.Methods {
 
             var createdEmbed = new DiscordEmbedBuilder {
                 Title = "Channel Deleted",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -91,7 +91,7 @@ namespace kevintrinh1227.Methods {
 
             var createdEmbed = new DiscordEmbedBuilder {
                 Title = "Channel Edited",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

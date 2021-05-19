@@ -93,7 +93,7 @@ namespace kevintrinh1227.Commands {
             var sendEmbed = new DiscordEmbedBuilder {
                 Title = title,
                 Description = description,
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.UtcNow,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

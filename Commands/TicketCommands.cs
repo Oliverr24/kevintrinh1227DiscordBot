@@ -20,6 +20,8 @@ namespace kevintrinh1227.Commands {
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
             var channel = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains($"{ctx.Member.Username.ToLower()}-ticket")).Value;
+            
+            var infoChannel = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains($"information")).Value;
 
             var ticketCat = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Type == ChannelType.Category && x.Value.Name.ToLower().Contains("tickets")).Value;
 
@@ -64,7 +66,7 @@ namespace kevintrinh1227.Commands {
                 var ticketEmbed = new DiscordEmbedBuilder {
                     Title = $"Asmodeus Club | Ticket",
                     Description = $"» You have made a support ticket.\n\n**User** » {ctx.Member.Mention} \n **Location** » {tempChannel.Mention} \n\n» Please click on the channel location and follow\n» the example ticket format in #support channel. \n» A {supportRole.Mention} member will assist you shortly.",
-                    Color = new DiscordColor(0xFF5555),
+                    Color = new DiscordColor(0xFF0000),
                     Timestamp = DateTime.Now,
                     Footer = new DiscordEmbedBuilder.EmbedFooter {
                         IconUrl = houndLogo.Url,
@@ -73,6 +75,7 @@ namespace kevintrinh1227.Commands {
                 };
 
                 await ctx.RespondAsync(embed: ticketEmbed).ConfigureAwait(false);
+                await tempChannel.SendMessageAsync($"A {supportRole.Mention} member will be with you shortly. Please be sure to follow the ticket guidelines in the {infoChannel.Mention} channel.").ConfigureAwait(false);
 
             }
             else {
@@ -82,7 +85,7 @@ namespace kevintrinh1227.Commands {
                     var ticketEmbed = new DiscordEmbedBuilder {
                         Title = $"Asmodeus Club | Ticket",
                         Description = $"» You already have an open support ticket.\n\n**User** » {ctx.Member.Mention} \n **Location** » {channel.Mention} \n\n» Please click on the channel location and follow\n» the example ticket format in #support channel. \n» A {supportRole.Mention} member will assist you shortly.",
-                        Color = new DiscordColor(0xFF5555),
+                        Color = new DiscordColor(0xFF0000),
                         Timestamp = DateTime.Now,
                         Footer = new DiscordEmbedBuilder.EmbedFooter {
                             IconUrl = houndLogo.Url,
@@ -111,7 +114,57 @@ namespace kevintrinh1227.Commands {
 
             var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*" || x.Name.ToLower() == "support team");
 
+            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-log")).Value;
+
             if (!roleCheck) {
+
+                if (ctx.Channel.Parent.Name.ToLower() == "tickets") {
+                    if (ctx.Channel.Name.ToLower().Contains(ctx.Member.Username.ToLower())) {
+                        if (ctx.Channel.Parent.Name.ToLower().Contains("ticket")) {
+
+                            var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
+
+                            var ticketCloseEmbed = new DiscordEmbedBuilder {
+                                Title = $"Asmodeus Club | Ticket Closed",
+                                Description = $"»  Ticket has been closed.\n\n**User** » {ctx.Member.Mention} \n **Ticket Name** » {ctx.Channel.Name}",
+                                Color = new DiscordColor(0xFF0000),
+                                Timestamp = DateTime.Now,
+                                Footer = new DiscordEmbedBuilder.EmbedFooter {
+                                    IconUrl = houndLogo.Url,
+                                    Text = $"© Asmodeus Club | Network"
+                                }
+                            };
+
+                            await staffLogCh.SendMessageAsync(embed: ticketCloseEmbed).ConfigureAwait(false);
+
+                            await ctx.Channel.DeleteAsync().ConfigureAwait(false);
+
+                            return;
+
+                        }
+                        else {
+
+                            var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
+
+                            var ticketCloseEmbed = new DiscordEmbedBuilder {
+                                Title = $"Asmodeus Club | Ticket Closed",
+                                Description = $"» This is not a ticket, it cannot be closed..\n\n**User** » {ctx.Member.Mention} \n **Ticket Name** » {ctx.Channel.Mention}",
+                                Color = new DiscordColor(0xFF0000),
+                                Timestamp = DateTime.Now,
+                                Footer = new DiscordEmbedBuilder.EmbedFooter {
+                                    IconUrl = houndLogo.Url,
+                                    Text = $"© Asmodeus Club | Network"
+                                }
+                            };
+
+                            await ctx.RespondAsync(embed: ticketCloseEmbed).ConfigureAwait(false);
+
+                            return;
+
+                        }
+                    }
+                }
+
                 var failEmbed = new DiscordEmbedBuilder {
                     Title = "Invalid Permissions",
                     Description = "You do not have permission to use this command. If this is incorrect, please contact an Administrator.",
@@ -128,8 +181,6 @@ namespace kevintrinh1227.Commands {
                 return;
             }
 
-            var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-log")).Value;
-
             if (ctx.Channel != null) {
 
                 if (ctx.Channel.Parent.Name.ToLower().Contains("ticket")) {
@@ -139,7 +190,7 @@ namespace kevintrinh1227.Commands {
                     var ticketCloseEmbed = new DiscordEmbedBuilder {
                         Title = $"Asmodeus Club | Ticket Closed",
                         Description = $"»  Ticket has been closed.\n\n**User** » {ctx.Member.Mention} \n **Ticket Name** » {ctx.Channel.Name}",
-                        Color = new DiscordColor(0xFF5555),
+                        Color = new DiscordColor(0xFF0000),
                         Timestamp = DateTime.Now,
                         Footer = new DiscordEmbedBuilder.EmbedFooter {
                             IconUrl = houndLogo.Url,
@@ -161,7 +212,7 @@ namespace kevintrinh1227.Commands {
                     var ticketCloseEmbed = new DiscordEmbedBuilder {
                         Title = $"Asmodeus Club | Ticket Closed",
                         Description = $"» This is not a ticket, it cannot be closed..\n\n**User** » {ctx.Member.Mention} \n **Ticket Name** » {ctx.Channel.Mention}",
-                        Color = new DiscordColor(0xFF5555),
+                        Color = new DiscordColor(0xFF0000),
                         Timestamp = DateTime.Now,
                         Footer = new DiscordEmbedBuilder.EmbedFooter {
                             IconUrl = houndLogo.Url,

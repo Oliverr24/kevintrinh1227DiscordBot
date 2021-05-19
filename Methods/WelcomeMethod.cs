@@ -37,7 +37,7 @@ namespace kevintrinh1227.Methods {
             var welcomeEmbed = new DiscordEmbedBuilder() {
                 Title = $"Welcome {member.Username}#{member.Discriminator} To **Asmodeus Club** (#{guild.MemberCount})",
                 Description = $"\n{pinEmo}**Server Information**{pinEmo}\n\n**Server IP** » `play.asmodeus.club`\n**Server Store** » https://asmodeus.club/store \n**Forums** » https://asmodeus.club/",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.UtcNow,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
@@ -50,7 +50,7 @@ namespace kevintrinh1227.Methods {
                 Description = $"**Please do the following...** \n ➜ View our latest server updates and news at {announcementsCh.Mention}. \n ➜ View important {informationCh.Mention} from our team." +
                 $"\n ➜ View our latest staff / network change logs at {serverlogsCh.Mention}. \n ➜ Read our discord server {rulesCh.Mention}. \n ➜ Select {selfRoleCh.Mention} based on desired notifications." +
                 $"\n \n {warnEmo} **Account Linking** {warnEmo} \n ➜ Most importantly be sure to link your discord account with your Minecraft account by running `/discord sync` in lobby/hub and sending your code here. Perks for server boosting can be found here {nitroCh.Mention}.",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.UtcNow,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

@@ -54,7 +54,7 @@ namespace kevintrinh1227.Commands {
             var clearEmbed = new DiscordEmbedBuilder {
                 Title = $"Asmodeus Club | Chat Purge",
                 Description = $"» Messages have been purged.\n\n**Amount** » {amount} \n **Channel** » {ctx.Channel.Mention}",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,

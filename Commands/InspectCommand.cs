@@ -74,7 +74,7 @@ namespace kevintrinh1227.Commands {
             var inspectEmbed = new DiscordEmbedBuilder {
                 Title = $"Asmodeus Club | Inspect",
                 Description = $"» A user has been inspected.\n\n**User** » {member.Mention}#{member.Discriminator} \n **ID** » {member.Id} \n **Day's In The Server** » {days} \n **Account Created** » {member.CreationTimestamp.UtcDateTime} \n **Member Roles** » {memRoles}",
-                Color = new DiscordColor(0xFF5555),
+                Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
                     IconUrl = houndLogo.Url,
