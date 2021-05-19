@@ -20,7 +20,7 @@ namespace kevintrinh1227.Commands {
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
             var channel = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains($"{ctx.Member.Username.ToLower()}-ticket")).Value;
-            
+
             var infoChannel = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains($"information")).Value;
 
             var ticketCat = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Type == ChannelType.Category && x.Value.Name.ToLower().Contains("tickets")).Value;
@@ -117,51 +117,47 @@ namespace kevintrinh1227.Commands {
             var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-log")).Value;
 
             if (!roleCheck) {
+                if (ctx.Channel.Name.ToLower().Contains(ctx.Member.Username.ToLower())) {
+                    if (ctx.Channel.Parent.Name.ToLower().Contains("ticket")) {
 
-                if (ctx.Channel.Parent.Name.ToLower() == "tickets") {
-                    if (ctx.Channel.Name.ToLower().Contains(ctx.Member.Username.ToLower())) {
-                        if (ctx.Channel.Parent.Name.ToLower().Contains("ticket")) {
+                        var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
-                            var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
+                        var ticketCloseEmbed = new DiscordEmbedBuilder {
+                            Title = $"Asmodeus Club | Ticket Closed",
+                            Description = $"»  Ticket has been closed.\n\n**User** » {ctx.Member.Mention} \n **Ticket Name** » {ctx.Channel.Name}",
+                            Color = new DiscordColor(0xFF0000),
+                            Timestamp = DateTime.Now,
+                            Footer = new DiscordEmbedBuilder.EmbedFooter {
+                                IconUrl = houndLogo.Url,
+                                Text = $"© Asmodeus Club | Network"
+                            }
+                        };
 
-                            var ticketCloseEmbed = new DiscordEmbedBuilder {
-                                Title = $"Asmodeus Club | Ticket Closed",
-                                Description = $"»  Ticket has been closed.\n\n**User** » {ctx.Member.Mention} \n **Ticket Name** » {ctx.Channel.Name}",
-                                Color = new DiscordColor(0xFF0000),
-                                Timestamp = DateTime.Now,
-                                Footer = new DiscordEmbedBuilder.EmbedFooter {
-                                    IconUrl = houndLogo.Url,
-                                    Text = $"© Asmodeus Club | Network"
-                                }
-                            };
+                        await staffLogCh.SendMessageAsync(embed: ticketCloseEmbed).ConfigureAwait(false);
 
-                            await staffLogCh.SendMessageAsync(embed: ticketCloseEmbed).ConfigureAwait(false);
+                        await ctx.Channel.DeleteAsync().ConfigureAwait(false);
 
-                            await ctx.Channel.DeleteAsync().ConfigureAwait(false);
+                        return;
 
-                            return;
+                    }
+                    else {
 
-                        }
-                        else {
+                        var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
-                            var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
+                        var ticketCloseEmbed = new DiscordEmbedBuilder {
+                            Title = $"Asmodeus Club | Ticket Closed",
+                            Description = $"» This is not a ticket, it cannot be closed..\n\n**User** » {ctx.Member.Mention} \n **Ticket Name** » {ctx.Channel.Mention}",
+                            Color = new DiscordColor(0xFF0000),
+                            Timestamp = DateTime.Now,
+                            Footer = new DiscordEmbedBuilder.EmbedFooter {
+                                IconUrl = houndLogo.Url,
+                                Text = $"© Asmodeus Club | Network"
+                            }
+                        };
 
-                            var ticketCloseEmbed = new DiscordEmbedBuilder {
-                                Title = $"Asmodeus Club | Ticket Closed",
-                                Description = $"» This is not a ticket, it cannot be closed..\n\n**User** » {ctx.Member.Mention} \n **Ticket Name** » {ctx.Channel.Mention}",
-                                Color = new DiscordColor(0xFF0000),
-                                Timestamp = DateTime.Now,
-                                Footer = new DiscordEmbedBuilder.EmbedFooter {
-                                    IconUrl = houndLogo.Url,
-                                    Text = $"© Asmodeus Club | Network"
-                                }
-                            };
+                        await ctx.RespondAsync(embed: ticketCloseEmbed).ConfigureAwait(false);
 
-                            await ctx.RespondAsync(embed: ticketCloseEmbed).ConfigureAwait(false);
-
-                            return;
-
-                        }
+                        return;
                     }
                 }
 
