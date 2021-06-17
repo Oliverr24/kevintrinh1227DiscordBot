@@ -30,7 +30,7 @@ namespace kevintrinh1227.Commands {
                 return;
             }
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower().Contains("*"));
+            var roleCheck = ctx.Member.Roles.Any(x => x.Id == 822711382373433364);
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {

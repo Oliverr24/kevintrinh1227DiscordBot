@@ -112,7 +112,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "*" || x.Name.ToLower() == "support team");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Id == 822711382373433364 || x.Id == 822762796981682206);
 
             var staffLogCh = ctx.Guild.Channels.FirstOrDefault(x => x.Value.Name.ToLower().Contains("staff-log")).Value;
 

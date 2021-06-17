@@ -17,7 +17,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Id == 826660041498558464);
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
@@ -93,7 +93,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Id == 826660041498558464);
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {

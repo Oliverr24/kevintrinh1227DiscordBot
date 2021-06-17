@@ -18,7 +18,7 @@ namespace kevintrinh1227.Commands {
 
             await ctx.Message.DeleteAsync().ConfigureAwait(false);
 
-            var roleCheck = ctx.Member.Roles.Any(x => x.Name.ToLower() == "bot.use");
+            var roleCheck = ctx.Member.Roles.Any(x => x.Id == 826660041498558464);
 
             if (!roleCheck) {
                 var failEmbed = new DiscordEmbedBuilder {
@@ -39,12 +39,16 @@ namespace kevintrinh1227.Commands {
 
             var houndLogo = ctx.Guild.Emojis.FirstOrDefault(x => x.Value.Name.ToLower() == "houndslogo").Value;
 
+            var pinEmo = DiscordEmoji.FromName(ctx.Client, ":pushpin:");
             var bustsEmo = DiscordEmoji.FromName(ctx.Client, ":busts_in_silhouette:");
             var gearEmo = DiscordEmoji.FromName(ctx.Client, ":gear:");
+            var gameDieEmo = DiscordEmoji.FromName(ctx.Client, ":game_die:");
+            var chartEmo = DiscordEmoji.FromName(ctx.Client, ":bar_chart:");
+            var bellEmo = DiscordEmoji.FromName(ctx.Client, ":bell:");
 
             var reactionEmbed = new DiscordEmbedBuilder {
-                Title = $"Self Roles",
-                Description = $"» Select a role to get server change updates, \n » React again to remove the selected role. \n\n » React with {bustsEmo}  to get the @stafflogs  role! \n » React with {gearEmo} to get the @changelogs role!",
+                Title = $"{bellEmo} | Notification Roles",
+                Description = $"React to the following roles in order to get pings regarding network updates and events.\nReact again to remove the selected role. \n\n ➜ {pinEmo} Reaction for important network announcements. \n ➜ {bustsEmo} Reaction for Staff Log updates. \n ➜ {gearEmo} Reaction for server change logs and updates. \n ➜ {gameDieEmo} Reaction for community events and games. \n ➜ {chartEmo} Reaction for polls and suggestions. \n",
                 Color = new DiscordColor(0xFF0000),
                 Timestamp = DateTime.Now,
                 Footer = new DiscordEmbedBuilder.EmbedFooter {
@@ -55,8 +59,11 @@ namespace kevintrinh1227.Commands {
 
             var reactMsg = await ctx.Channel.SendMessageAsync(embed: reactionEmbed).ConfigureAwait(false);
 
+            await reactMsg.CreateReactionAsync(pinEmo).ConfigureAwait(false);
             await reactMsg.CreateReactionAsync(bustsEmo).ConfigureAwait(false);
             await reactMsg.CreateReactionAsync(gearEmo).ConfigureAwait(false);
+            await reactMsg.CreateReactionAsync(gameDieEmo).ConfigureAwait(false);
+            await reactMsg.CreateReactionAsync(chartEmo).ConfigureAwait(false);
 
         }
 
